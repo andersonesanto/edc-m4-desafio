@@ -8,7 +8,7 @@ import boto3
 
 aws_access_key_id = Variable.get('aws_access_key_id')
 aws_secret_access_key = Variable.get('aws_secret_access_key')
-glue = boto3.client('glue', region_name='us-east-1',
+glue = boto3.client('glue', region_name='us-east-2',
                     aws_access_key_id=aws_access_key_id, 
                     aws_secret_access_key=aws_secret_access_key)
 
@@ -25,9 +25,9 @@ def trigger_crawler_final_func():
 with DAG(
     'enem_batch_spark_k8s',
     default_args={
-        'owner': 'Neylson',
+        'owner': 'Santo',
         'depends_on_past': False,
-        'email': ['neylson.crepalde@a3data.com.br'],
+        'email': ['andersonesanto@gmail.com'],
         'email_on_failure': False,
         'email_on_retry': False,
         'max_active_runs': 1,
