@@ -27,10 +27,10 @@ spec:
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
         name: aws-credentials
-        key: AWS_ACCESS_KEY_ID
+        key: aws_access_key_id
       AWS_SECRET_ACCESS_KEY:
         name: aws-credentials
-        key: AWS_SECRET_ACCESS_KEY
+        key: aws_secret_access_key
     cores: 1
     coreLimit: "1200m"
     memory: "4g"
@@ -44,10 +44,10 @@ spec:
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
         name: aws-credentials
-        key: AWS_ACCESS_KEY_ID
+        key: aws_access_key_id
       AWS_SECRET_ACCESS_KEY:
         name: aws-credentials
-        key: AWS_SECRET_ACCESS_KEY
+        key: aws_secret_access_key
     cores: 3
     instances: 3
     memory: "4g"
