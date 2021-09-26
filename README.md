@@ -20,3 +20,7 @@ Os alunos deverão desempenhar as seguintes atividades:
 7. Caso deseje utilizar o Google, disponibilize os dados para consulta usando o Big Query. Caso utilize outra nuvem, a escolha da engine de Data Lake é livre.  
 8. Use a ferramenta de Big Data ou a engine de Data Lake (ou o BigQuery, se escolher trabalhar com Google Cloud) para investigar os dados e responder às perguntas do desafio.  
 9. Quando o desenho da arquitetura estiver pronto, crie um repositório no Github (ou Gitlab, ou Bitbucket, ou outro de sua escolha) e coloque os códigos de processos Python e implantação da estrutura Kubernetes.
+
+***
+Todo o código foi baseado no repositório:  
+https://github.com/neylsoncrepalde/edc_mod4_exercise_igti  

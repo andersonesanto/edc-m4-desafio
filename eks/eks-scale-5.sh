@@ -1,3 +1,3 @@
-eksctl get cluster
-eksctl get nodegroup --cluster igtik8s
-eksctl scale nodegroup --cluster igtik8s -r us-east-2 --nodes-min=2 --nodes-max=6
+#!/bin/bash 
+eksctl scale nodegroup --cluster igtik8s -r us-east-2 \
+--nodes-min=3 --nodes-max=5 --nodes=5
