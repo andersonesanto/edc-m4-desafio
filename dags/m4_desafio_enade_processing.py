@@ -7,32 +7,33 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.models import Variable
 import boto3
 
-aws_access_key_id = Variable.get('aws_access_key_id')
-aws_secret_access_key = Variable.get('aws_secret_access_key')
-glue = boto3.client('glue', region_name='us-east-2',
-                    aws_access_key_id=aws_access_key_id,
-                    aws_secret_access_key=aws_secret_access_key)
 
-
-def create_and_trigger_crawler_enade_m4_enade():
-    glue.delete_crawler(Name='crawler_m4_enade')
-
-    glue.create_crawler(
-        Name='crawler_m4_enade',
-        Role='AWSGlueServiceRoleDefault',
-        DatabaseName='enade2017',
-        Description='Crawler enade 2017 ',
-        Targets={
-            'S3Targets': [
-                {
-                    'Path': 's3://m4-597495568095/processing-zone/enade/',
-                    'Exclusions': []
-                },
-            ]
-        }
-    )
-
-    glue.start_crawler(Name='crawler_m4_enade')
+# aws_access_key_id = Variable.get('aws_access_key_id')
+# aws_secret_access_key = Variable.get('aws_secret_access_key')
+# glue = boto3.client('glue', region_name='us-east-2',
+#                     aws_access_key_id=aws_access_key_id,
+#                     aws_secret_access_key=aws_secret_access_key)
+# 
+# 
+# def create_and_trigger_crawler_enade_m4_enade():
+#     glue.delete_crawler(Name='crawler_m4_enade')
+# 
+#     glue.create_crawler(
+#         Name='crawler_m4_enade',
+#         Role='AWSGlueServiceRoleDefault',
+#         DatabaseName='enade2017',
+#         Description='Crawler enade 2017 ',
+#         Targets={
+#             'S3Targets': [
+#                 {
+#                     'Path': 's3://m4-597495568095/processing-zone/enade/',
+#                     'Exclusions': []
+#                 },
+#             ]
+#         }
+#     )
+# 
+#     glue.start_crawler(Name='crawler_m4_enade')
 
 
 with DAG(
@@ -66,10 +67,11 @@ with DAG(
         kubernetes_conn_id="kubernetes_default",
     )
 
-    create_and_trigger_crawler_enade = PythonOperator(
-        task_id='create_and_trigger_crawler_enade',
-        python_callable=create_and_trigger_crawler_enade_m4_enade,
-    )
+#     create_and_trigger_crawler_enade = PythonOperator(
+#         task_id='create_and_trigger_crawler_enade',
+#         python_callable=create_and_trigger_crawler_enade_m4_enade,
+#     )
 
 
-enade_converte_parquet >> enade_converte_parquet_sensor >> create_and_trigger_crawler_enade
+# enade_converte_parquet >> enade_converte_parquet_sensor >> create_and_trigger_crawler_enade
+enade_converte_parquet >> enade_converte_parquet_sensor 
