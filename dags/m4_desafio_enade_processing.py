@@ -16,24 +16,23 @@ glue = boto3.client('glue', region_name='us-east-2',
 
 
 def create_and_trigger_crawler_enade_m4_enade():
-    glue.delete_crawler(Name='crawler_m4_enade')
-
-    glue.create_crawler(
-        Name='crawler_m4_enade',
-        Role='AWSGlueServiceRoleDefault',
-        DatabaseName='enade2017',
-        Description='Crawler enade 2017 ',
-        Targets={
-            'S3Targets': [
-                {
-                    'Path': 's3://m4-597495568095/processing-zone/enade/',
-                    'Exclusions': []
-                },
-            ]
-        }
-    )
-
-    glue.start_crawler(Name='crawler_m4_enade')
+    try:
+        glue.get_crawler(Name='crawler_m4_enade')
+    except glue.exceptions.EntityNotFoundException:
+        glue.create_crawler(
+            Name='crawler_m4_enade',
+            Role='arn:aws:iam::597495568095:role/santo-glue-service-role',
+            DatabaseName='enade2017',
+            Description='Crawler enade 2017 ',
+            Targets={
+                'S3Targets': [
+                    {
+                        'Path': 's3://m4-597495568095/processing-zone/enade/',
+                        'Exclusions': []
+                    },
+                ]
+            }
+        )
 
 
 with DAG(
@@ -69,9 +68,8 @@ with DAG(
 
     create_and_trigger_crawler_enade = PythonOperator(
         task_id='create_and_trigger_crawler_enade',
-        python_callable=create_and_trigger_crawler_enade_m4_enade,
+        python_callable=create_and_trigger_crawler_enade_m4_enade
     )
 
 
 enade_converte_parquet >> enade_converte_parquet_sensor >> create_and_trigger_crawler_enade
-
