@@ -19,7 +19,7 @@ if __name__ == "__main__":
     # init spark session
     spark = SparkSession\
             .builder\
-            .appName("Repartition Job")\
+            .appName("ENADE Job")\
             .getOrCreate()
 
     spark.sparkContext.setLogLevel("WARN")
@@ -29,7 +29,7 @@ if __name__ == "__main__":
         .read
         .format("csv")
         .options(header='true', inferSchema='true', delimiter=';')
-        .load("s3a://m4-597495568095/landing-zone/enem/")
+        .load("s3a://m4-597495568095/landing-zone/enade/")
     )
     
     df.printSchema()
@@ -38,11 +38,11 @@ if __name__ == "__main__":
     .write
     .mode("overwrite")
     .format("parquet")
-    .save("s3a://m4-597495568095/processing-zone/enem/")
+    .save("s3a://m4-597495568095/processing-zone/enade/")
     )
 
-    print("*****************")
+    print("*********************")
     print("Escrito com sucesso!")
-    print("*****************")
+    print("*********************")
 
     spark.stop()

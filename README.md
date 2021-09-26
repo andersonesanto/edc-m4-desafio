@@ -29,7 +29,24 @@ Os alunos deverão desempenhar as seguintes atividades:
 
 9. Quando o desenho da arquitetura estiver pronto, crie um repositório no Github (ou Gitlab, ou Bitbucket, ou outro de sua escolha) e coloque os códigos de processos Python e implantação da estrutura Kubernetes.
 ***
+## Execução
+#### Criar cluster eks
+#### Instalar airflow
+#### Instalar spark
 
+#### Preparar DAGS e fluxo no Airflow
+- Download e extração do CSV
+  - s3://m4-597495568095/landing-zone/MICRODADOS_ENADE_2017.txt
+- Conversão CSV para Parquet
+- Criar Glue Crawler
+    baseado em https://gist.github.com/ejlp12/30d67c07bf9e46b98a350569976f08aa
+
+#### Fluxo de execução do DAG
+- enade_converte_parquet >> 
+- enade_converte_parquet_sensor >> 
+- create_and_trigger_crawler_enade
+
+#### Efetuar consultas no Athena
 ***
 Todo o código foi baseado no repositório:  
 https://github.com/neylsoncrepalde/edc_mod4_exercise_igti  
