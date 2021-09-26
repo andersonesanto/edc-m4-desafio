@@ -50,3 +50,11 @@ Os alunos deverão desempenhar as seguintes atividades:
 ***
 Todo o código foi baseado no repositório:  
 https://github.com/neylsoncrepalde/edc_mod4_exercise_igti  
+
+REPOSITORY      2021-09-26T08:32:04-03:00       MUTABLE 597495568095    arn:aws:ecr:us-east-2:597495568095:repository/edc-m4-desafio    
+edc-m4-desafio  
+
+597495568095.dkr.ecr.us-east-2.amazonaws.com/edc-m4-desafio
+
+ENCRYPTIONCONFIGURATION AES256
+IMAGESCANNINGCONFIGURATION      False
