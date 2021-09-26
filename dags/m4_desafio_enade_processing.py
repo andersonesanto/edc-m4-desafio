@@ -34,6 +34,10 @@ def create_and_trigger_crawler_enade_m4_enade():
             }
         )
 
+    glue.start_crawler(
+        Name='crawler_m4_enade'
+    )
+
 
 with DAG(
     'enade_batch',
