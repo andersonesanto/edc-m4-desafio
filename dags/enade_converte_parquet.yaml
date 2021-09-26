@@ -8,12 +8,16 @@ spec:
     - name: ivy
       emptyDir: {}
   sparkConf:
-    extraJavaOptions: -Dcom.amazonaws.services.s3.enableV4=true
+    spark.driver.extraJavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
+    extraJavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"    
     spark.jars.packages: "org.apache.hadoop:hadoop-aws:2.7.3,org.apache.spark:spark-avro_2.12:3.0.1"
-    spark.driver.extraJavaOptions: "-Divy.cache.dir=/tmp -Divy.home=/tmp"
     spark.kubernetes.allocation.batch.size: "10"
   hadoopConf:
+    fs.s3a.aws.credentials.provider: com.amazonaws.auth.EnvironmentVariableCredentialsProvider
     fs.s3a.impl: org.apache.hadoop.fs.s3a.S3AFileSystem
+    fs.s3a.endpoint: "s3.us-east-2.amazonaws.com"
+    fs.s3a.path.style.access: “true”
+    fs.s3a.connection.ssl.enabled: “true”    
   type: Python
   pythonVersion: "3"
   mode: cluster
