@@ -52,7 +52,7 @@ with DAG(
     tags=['spark', 'kubernetes', 'batch', 'enade', 'igti', 'm4'],
 ) as dag:
     enade_converte_parquet = SparkKubernetesOperator(
-        task_id='converte_parquet',
+        task_id='enade_converte_parquet',
         namespace="airflow",
         application_file="enade_converte_parquet.yaml",
         kubernetes_conn_id="kubernetes_default",

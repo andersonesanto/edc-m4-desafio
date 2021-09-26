@@ -29,7 +29,7 @@ if __name__ == "__main__":
         .read
         .format("csv")
         .options(header='true', inferSchema='true', delimiter=';')
-        .load("s3a://m4-597495568095/landing-zone/enade/")
+        .load("s3a://m4-597495568095/landing-zone/enade/MICRODADOS_ENADE_2017.txt")
     )
     
     df.printSchema()

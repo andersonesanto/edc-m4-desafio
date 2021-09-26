@@ -19,7 +19,7 @@ spec:
   mode: cluster
   image: "597495568095.dkr.ecr.us-east-2.amazonaws.com/edc-m4-desafio:v3.0.0-aws"
   imagePullPolicy: Always
-  mainApplicationFile: s3a://m4-597495568095/pyspark/enade_converte_parquet.py
+  mainApplicationFile: s3://m4-597495568095/pyspark/enade_converte_parquet.py
   sparkVersion: "3.0.0"
   restartPolicy:
     type: Never
@@ -27,10 +27,10 @@ spec:
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
         name: aws-credentials
-        key: aws_access_key_id
+        key: AWS_ACCESS_KEY_ID
       AWS_SECRET_ACCESS_KEY:
         name: aws-credentials
-        key: aws_secret_access_key
+        key: AWS_SECRET_ACCESS_KEY
     cores: 1
     coreLimit: "1200m"
     memory: "4g"
@@ -44,10 +44,10 @@ spec:
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
         name: aws-credentials
-        key: aws_access_key_id
+        key: AWS_ACCESS_KEY_ID
       AWS_SECRET_ACCESS_KEY:
         name: aws-credentials
-        key: aws_secret_access_key
+        key: AWS_SECRET_ACCESS_KEY
     cores: 3
     instances: 3
     memory: "4g"
