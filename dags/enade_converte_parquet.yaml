@@ -8,8 +8,9 @@ spec:
     - name: ivy
       emptyDir: {}
   sparkConf:
-    spark.driver.extraJavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
-    extraJavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"    
+    # spark.driver.extraJavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
+    # spark.executor.extraJavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
+    # extraJavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"    
     spark.jars.packages: "org.apache.hadoop:hadoop-aws:2.7.3,org.apache.spark:spark-avro_2.12:3.0.1"
     spark.kubernetes.allocation.batch.size: "10"
   hadoopConf:
@@ -28,6 +29,7 @@ spec:
   restartPolicy:
     type: Never
   driver:
+    JavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
         name: aws-credentials
@@ -45,6 +47,7 @@ spec:
       - name: ivy
         mountPath: /tmp
   executor:
+    JavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
         name: aws-credentials
