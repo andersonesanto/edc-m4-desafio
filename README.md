@@ -55,10 +55,5 @@ https://www.cncf.io/blog/2021/01/20/spark-operator-and-s3-4-integration-steps-to
 
 https://stackoverflow.com/questions/34209196/amazon-s3a-returns-400-bad-request-with-spark
 
-REPOSITORY      2021-09-26T08:32:04-03:00       MUTABLE 597495568095    arn:aws:ecr:us-east-2:597495568095:repository/edc-m4-desafio    
-edc-m4-desafio  
+https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/user-guide.md
 
-597495568095.dkr.ecr.us-east-2.amazonaws.com/edc-m4-desafio
-
-ENCRYPTIONCONFIGURATION AES256
-IMAGESCANNINGCONFIGURATION      False
