@@ -29,7 +29,7 @@ spec:
   restartPolicy:
     type: Never
   driver:
-    JavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
+    javaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
         name: aws-credentials
@@ -47,7 +47,7 @@ spec:
       - name: ivy
         mountPath: /tmp
   executor:
-    JavaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
+    javaOptions: "-Dcom.amazonaws.services.s3.enableV4=true -Divy.cache.dir=/tmp -Divy.home=/tmp"
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
         name: aws-credentials
